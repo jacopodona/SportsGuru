@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SportsGuru</string>
+    <string name="welcome_title">Benvenuto in SportsGuru</string>
+    <string name="welcome_description">Ricerca statistiche di atleti inserendo il nome dell\'atleta, la statistica che ti interessa e a partire da che anno</string>
+    <string name="welcome_start">Iniziamo</string>
+    <string name="athlete_title">Inserisci l\'atleta che ti interessa</string>
+    <string name="name">Nome</string>
+    <string name="surname">Cognome</string>
+</resources>
