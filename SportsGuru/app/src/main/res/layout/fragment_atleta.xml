@@ -2,10 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
     <LinearLayout
+        android:id="@+id/atleta_layout_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="60dp"
@@ -26,13 +28,14 @@
             android:textSize="30sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textField_nome"
+            android:id="@+id/atleta_textLayout_nome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:hint="@string/name">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/atleta_textField_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -41,19 +44,41 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textField_cognome"
+            android:id="@+id/atleta_textLayout_cognome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:hint="@string/surname">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/atleta_textField_cognome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/atleta_back"
+                android:layout_alignParentLeft="true"
+                android:text="@string/back"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/atleta_next"
+                android:text="@string/next"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

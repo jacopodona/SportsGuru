@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
     <LinearLayout
@@ -26,13 +27,14 @@
             android:textSize="30sp"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textField_stat"
+            android:id="@+id/stat_textLayout_stat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
             android:hint="@string/stat">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/stat_textField_stat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -41,19 +43,42 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textField_anno"
+            android:id="@+id/stat_textLayout_anno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:hint="@string/year">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/stat_textField_anno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/stat_back"
+                android:layout_alignParentLeft="true"
+                android:text="@string/back"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:id="@+id/stat_next"
+                android:text="@string/next"/>
+
+        </RelativeLayout>
 
     </LinearLayout>
 

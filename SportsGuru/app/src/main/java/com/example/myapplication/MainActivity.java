@@ -8,53 +8,55 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     String nomeAtleta,cognomeAtleta,statisticaAtleta,durataAtleta;
 
 
-    private Button next,back;
     private static final int NUM_PAGES = 3;
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
     private RelativeLayout layout_navigazione;
 
+    WelcomeFragment welcome;
+    FragmentAtleta atleta;
+    FragmentStat stat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        welcome=new WelcomeFragment();
+        atleta=new FragmentAtleta();
+        stat=new FragmentStat();
 
-        back=findViewById(R.id.main_previous);
-        next=findViewById(R.id.main_next);
-        layout_navigazione=findViewById(R.id.main_layout_navigazione);
-        viewPager=findViewById(R.id.main_pager);
+        viewPager=findViewById(R.id.main_viewpager);
 
         pagerAdapter=new ScreenSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
         //viewPager.setUserInputEnabled(false);//disable swipe dell'utente
 
-        setupBottoni();
     }
 
-    private void setupBottoni() {
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                previous(viewPager.getCurrentItem());
-            }
-        });
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                next(viewPager.getCurrentItem());
-            }
-        });
+    public void previous(int i) {
+        if(i>0) {
+            viewPager.setCurrentItem(i-1);
+        }
     }
+
+    public void next(int i) {
+        if(i<2) {
+            viewPager.setCurrentItem(i+1);
+        }
+    }
+
 
     public void confermaAtleta(String nome, String cognome){
         nomeAtleta=nome;
@@ -64,24 +66,7 @@ public class MainActivity extends AppCompatActivity {
     public void confermaStatistica(String statistica,String durata){
         statisticaAtleta=statistica;
         durataAtleta=durata;
-    }
-
-    public void next(int index){
-        if(index<NUM_PAGES){
-            viewPager.setCurrentItem(index+1);
-            if(index==0){
-                layout_navigazione.setVisibility(View.VISIBLE);
-            }
-        }
-    }
-
-    public void previous(int index){
-        if(index>0){
-            viewPager.setCurrentItem(index-1);
-        }
-        if(index==1){
-            layout_navigazione.setVisibility(View.GONE);
-        }
+        Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+durataAtleta);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
@@ -109,4 +94,5 @@ public class MainActivity extends AppCompatActivity {
             return NUM_PAGES;
         }
     }
+
 }

@@ -9,4 +9,11 @@
     <string name="stat">Statistica</string>
     <string name="year">Anno</string>
     <string name="stat_title">Inserisci la statistica e l\'anno che ti interessano</string>
+    <string name="next">Continua</string>
+    <string name="back">Indietro</string>
+    <string name="confirm">Conferma</string>
+    <string name="insert_name_error">Inserire un nome</string>
+    <string name="insert_surname_error">Inserire un cognome</string>
+    <string name="insert_stat_error">Inserire la statistica</string>
+    <string name="insert_year_error">Inserire l\'anno</string>
 </resources>
