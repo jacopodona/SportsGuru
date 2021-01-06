@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
     String nomeAtleta,cognomeAtleta,statisticaAtleta,durataAtleta;
 
+
+    private Button next,back;
     private static final int NUM_PAGES = 3;
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
@@ -26,12 +29,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        back=findViewById(R.id.main_previous);
+        next=findViewById(R.id.main_next);
         layout_navigazione=findViewById(R.id.main_layout_navigazione);
         viewPager=findViewById(R.id.main_pager);
 
         pagerAdapter=new ScreenSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
-        viewPager.setUserInputEnabled(false);//disable swipe dell'utente
+        //viewPager.setUserInputEnabled(false);//disable swipe dell'utente
+
+        setupBottoni();
+    }
+
+    private void setupBottoni() {
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previous(viewPager.getCurrentItem());
+            }
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                next(viewPager.getCurrentItem());
+            }
+        });
     }
 
     public void confermaAtleta(String nome, String cognome){
@@ -56,6 +78,9 @@ public class MainActivity extends AppCompatActivity {
     public void previous(int index){
         if(index>0){
             viewPager.setCurrentItem(index-1);
+        }
+        if(index==1){
+            layout_navigazione.setVisibility(View.GONE);
         }
     }
 

@@ -8,14 +8,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/main_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/main_layout_navigazione"/>
+            android:layout_height="match_parent"/>
+            android:layout_above="@+id/main_layout_navigazione" />
 
         <RelativeLayout
             android:id="@+id/main_layout_navigazione"
@@ -23,7 +22,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="60dp"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:gravity="center">

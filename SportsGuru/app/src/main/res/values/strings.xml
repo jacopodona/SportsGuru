@@ -6,4 +6,7 @@
     <string name="athlete_title">Inserisci l\'atleta che ti interessa</string>
     <string name="name">Nome</string>
     <string name="surname">Cognome</string>
+    <string name="stat">Statistica</string>
+    <string name="year">Anno</string>
+    <string name="stat_title">Inserisci la statistica e l\'anno che ti interessano</string>
 </resources>
