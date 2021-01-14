@@ -44,8 +44,8 @@ public class FragmentStat extends Fragment {
             @Override
             public void onClick(View v) {
                 if(!TextUtils.isEmpty(stat.getText()) && !TextUtils.isEmpty(anno.getText())){
-                    activity.next(INDEX);
                     activity.confermaStatistica(stat.getText().toString(),anno.getText().toString());
+                    activity.research();
                     clearErrors();
                 }
                 else{

@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentContainer;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +18,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String nomeAtleta,cognomeAtleta,statisticaAtleta,durataAtleta;
+    String nomeAtleta="";
+    String cognomeAtleta="";
+    String statisticaAtleta="";
+    String durataAtleta="";
 
 
     private static final int NUM_PAGES = 3;
@@ -52,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void next(int i) {
-        if(i<2) {
+        if(i<NUM_PAGES-1) {
             viewPager.setCurrentItem(i+1);
         }
     }
@@ -66,7 +70,16 @@ public class MainActivity extends AppCompatActivity {
     public void confermaStatistica(String statistica,String durata){
         statisticaAtleta=statistica;
         durataAtleta=durata;
+    }
+
+    public void research() {
+        Intent i=new Intent(this,PresentationActivity.class);
         Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+durataAtleta);
+        i.putExtra("nome",nomeAtleta);
+        i.putExtra("cognome",cognomeAtleta);
+        i.putExtra("statistica",statisticaAtleta);
+        i.putExtra("anno",durataAtleta);
+        startActivity(i);
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
@@ -95,4 +108,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public String getNomeAtleta() {
+        return nomeAtleta;
+    }
+
+    public String getCognomeAtleta() {
+        return cognomeAtleta;
+    }
+
+    public String getStatisticaAtleta() {
+        return statisticaAtleta;
+    }
+
+    public String getDurataAtleta() {
+        return durataAtleta;
+    }
 }
