@@ -37,6 +37,7 @@
                 android:id="@+id/stat_textField_stat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="text"
                 android:background="@color/white"
                 />
 
@@ -53,6 +54,7 @@
                 android:id="@+id/stat_textField_anno"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:background="@color/white"
                 />
 

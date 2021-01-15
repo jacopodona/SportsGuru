@@ -1,4 +1,4 @@
-package com.example.myapplication;
+ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,13 +23,13 @@ public class PresentationActivity extends AppCompatActivity {
         annoAtleta=findViewById(R.id.presentation_textview_anno);
 
         Intent i=getIntent();
-        nome=i.getExtras().getString("nome");
-        cognome=i.getExtras().getString("cognome");
+        nome=i.getStringExtra("nome");
+        cognome=i.getStringExtra("cognome");
         stat=i.getStringExtra("statistica");
         anno=i.getStringExtra("anno");
 
         Log.d("Request","Atleta: "+nome+" "+cognome+"\nStatistica: "+stat+"\nAnno: "+anno);
-        
+
         nomeAtleta.setText(nome+" "+cognome);
         statAtleta.setText(stat);
         annoAtleta.setText(anno);

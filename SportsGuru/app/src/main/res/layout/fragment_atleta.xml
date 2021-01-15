@@ -38,6 +38,7 @@
                 android:id="@+id/atleta_textField_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:background="@color/white"
                 />
 
@@ -54,6 +55,7 @@
                 android:id="@+id/atleta_textField_cognome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="textPersonName"
                 android:background="@color/white"
                 />
 
