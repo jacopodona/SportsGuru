@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     String nomeAtleta="";
     String cognomeAtleta="";
     String statisticaAtleta="";
-    String durataAtleta="";
+    String dataStatistica="";
 
 
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 4;
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
     private RelativeLayout layout_navigazione;
@@ -67,18 +67,21 @@ public class MainActivity extends AppCompatActivity {
         cognomeAtleta=cognome;
     }
 
-    public void confermaStatistica(String statistica,String durata){
+    public void confermaStatistica(String statistica){
         statisticaAtleta=statistica;
-        durataAtleta=durata;
+    }
+
+    public void confermaData(String data){
+        dataStatistica=data;
     }
 
     public void research() {
         Intent i=new Intent(this,PresentationActivity.class);
-        Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+durataAtleta);
+        Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+dataStatistica);
         i.putExtra("nome",nomeAtleta);
         i.putExtra("cognome",cognomeAtleta);
         i.putExtra("statistica",statisticaAtleta);
-        i.putExtra("anno",durataAtleta);
+        i.putExtra("anno",dataStatistica);
         startActivity(i);
     }
 
@@ -98,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
             }
             else if(position==2){
                 f=new FragmentStat();
+            }
+            else if(position==3){
+                f=new FragmentDatePicker();
             }
             return f;
         }
@@ -120,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
         return statisticaAtleta;
     }
 
-    public String getDurataAtleta() {
-        return durataAtleta;
+    public String getDataStatistica() {
+        return dataStatistica;
     }
 }

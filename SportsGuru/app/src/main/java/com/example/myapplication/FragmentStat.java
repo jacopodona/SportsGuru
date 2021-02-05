@@ -29,9 +29,9 @@ public class FragmentStat extends Fragment {
         next=v.findViewById(R.id.stat_next);
         back=v.findViewById(R.id.stat_back);
         stat=v.findViewById(R.id.stat_textField_stat);
-        anno=v.findViewById(R.id.stat_textField_anno);
+        //anno=v.findViewById(R.id.stat_textField_anno);
         statLayout=v.findViewById(R.id.stat_textLayout_stat);
-        annoLayout=v.findViewById(R.id.stat_textLayout_anno);
+        //annoLayout=v.findViewById(R.id.stat_textLayout_anno);
 
         setupBottoni();
 
@@ -43,18 +43,19 @@ public class FragmentStat extends Fragment {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!TextUtils.isEmpty(stat.getText()) && !TextUtils.isEmpty(anno.getText())){
-                    activity.confermaStatistica(stat.getText().toString(),anno.getText().toString());
-                    activity.research();
+                if(!TextUtils.isEmpty(stat.getText())/* && !TextUtils.isEmpty(anno.getText())*/){
+                    activity.confermaStatistica(stat.getText().toString());
+                    //activity.research();
+                    activity.next(INDEX);
                     clearErrors();
                 }
                 else{
                     if(TextUtils.isEmpty(stat.getText())){
                         statLayout.setError(getResources().getString(R.string.insert_stat_error));
                     }
-                    if(TextUtils.isEmpty(anno.getText())){
+                    /*if(TextUtils.isEmpty(anno.getText())){
                         annoLayout.setError(getResources().getString(R.string.insert_year_error));
-                    }
+                    }*/
                 }
             }
         });
@@ -70,11 +71,11 @@ public class FragmentStat extends Fragment {
 
     private void clearEditText() {
         stat.setText("");
-        anno.setText("");
+        //anno.setText("");
     }
 
     private void clearErrors(){
         statLayout.setError(null);
-        anno.setError(null);
+        //anno.setError(null);
     }
 }

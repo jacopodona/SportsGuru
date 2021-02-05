@@ -9,7 +9,7 @@
     <string name="surname">Cognome</string>
     <string name="stat">Statistica</string>
     <string name="year">Anno</string>
-    <string name="stat_title">Inserisci la statistica e l\'anno che ti interessano</string>
+    <string name="stat_title">Inserisci la statistica che ti interessa</string>
     <string name="next">Continua</string>
     <string name="back">Indietro</string>
     <string name="confirm">Conferma</string>
@@ -18,4 +18,16 @@
     <string name="insert_stat_error">Inserire la statistica</string>
     <string name="insert_year_error">Inserire l\'anno</string>
     <string name="confirm_title">Conferma i tuoi dati</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="date_title">Inserisci la data da cui far partire la statistica</string>
+    <string name="date_select">Seleziona la data</string>
+    <string-array name="date_spinner">
+        <item>Ultima partita</item>
+        <item>Ultimo mese</item>
+        <item>Ultimi 3 mesi</item>
+        <item>Ultimo anno</item>
+        <item>Ultimi 3 anni</item>
+        <item>In carriera</item>
+        <item>Inserisci data manualmente</item>
+    </string-array>
 </resources>

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
+    tools:context=".FragmentDatePicker">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,43 +21,32 @@
             android:layout_centerVertical="true"
             android:layout_marginTop="60dp"
             android:gravity="center"
-            android:text="@string/stat_title"
+            android:text="@string/date_title"
             android:textColor="@color/green"
             android:textSize="30sp" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/stat_textLayout_stat"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
-            android:hint="@string/stat">
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/stat_textField_stat"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:inputType="text" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Seleziona anno" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <!--><com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/stat_textLayout_anno"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:hint="@string/year">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/stat_textField_anno"
-                android:layout_width="match_parent"
+            <Spinner
+                android:id="@+id/datepicker_spinner"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:background="@color/white"
-                />
+                android:layout_gravity="center"
+                android:gravity="center" />
 
-        </com.google.android.material.textfield.TextInputLayout><!-->
-
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -66,22 +54,22 @@
             android:layout_marginTop="160dp">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/stat_back"
+                android:id="@+id/datepicker_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:text="@string/back" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/stat_next"
+                android:id="@+id/datepicker_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:text="@string/next" />
+                android:text="@string/confirm" />
 
         </RelativeLayout>
 
-    </LinearLayout>
 
+    </LinearLayout>
 
 </RelativeLayout>
