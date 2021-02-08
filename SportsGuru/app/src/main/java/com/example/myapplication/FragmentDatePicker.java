@@ -17,12 +17,18 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+
 
 public class FragmentDatePicker extends Fragment {
 
     private final int INDEX = 3;
     private Spinner spinner;
     private MaterialButton back, confirm;
+    private int dateIndicator;
 
     @Nullable
     @Override
@@ -41,7 +47,10 @@ public class FragmentDatePicker extends Fragment {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                dateIndicator=position;
+                if(dateIndicator==6){
+                    //Toast.makeText(getContext(),"Devi far apparire picker",Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -54,11 +63,40 @@ public class FragmentDatePicker extends Fragment {
 
     private void setupBottoni() {
         MainActivity activity = (MainActivity) getActivity();
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar cal=Calendar.getInstance();
+                Date date;
                 String text = spinner.getSelectedItem().toString();
-                Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+                switch (dateIndicator){
+                    case 0://Ieri
+                        cal.add(Calendar.DAY_OF_YEAR,-1);
+                        break;
+                    case 1://Ultimo mese
+                        cal.add(Calendar.MONTH,-1);
+                        break;
+                    case 2://Ultimi 3 mesi
+                        cal.add(Calendar.MONTH,-3);
+                        break;
+                    case 3://Questo anno
+                        cal.add(Calendar.YEAR,-1);
+                        break;
+                    case 4://Ultimi 3 anni
+                        cal.add(Calendar.YEAR,-3);
+                        break;
+                    case 5://In carriera
+                        cal.add(Calendar.YEAR,-500);
+                        break;
+                    case 6://Data Manuale
+
+                        break;
+                }
+                date=cal.getTime();
+                //Toast.makeText(getContext(),"Data di partenza: "+formatter.format(date),Toast.LENGTH_LONG).show();
+                activity.confermaData(formatter.format(date));
+                activity.research();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
