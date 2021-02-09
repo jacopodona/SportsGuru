@@ -48,10 +48,20 @@
 
         </LinearLayout>
 
+
+        <DatePicker
+            android:id="@+id/datepicker_datepicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:datePickerMode="spinner"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            android:calendarViewShown="false"/>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp">
+            android:layout_marginTop="50dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/datepicker_back"

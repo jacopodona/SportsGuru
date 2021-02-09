@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ public class FragmentDatePicker extends Fragment {
     private Spinner spinner;
     private MaterialButton back, confirm;
     private int dateIndicator;
+    private DatePicker datePicker;
 
     @Nullable
     @Override
@@ -38,6 +40,7 @@ public class FragmentDatePicker extends Fragment {
         spinner = v.findViewById(R.id.datepicker_spinner);
         back = v.findViewById(R.id.datepicker_back);
         confirm = v.findViewById(R.id.datepicker_confirm);
+        datePicker = v.findViewById(R.id.datepicker_datepicker);
 
         setupBottoni();
 
@@ -49,7 +52,10 @@ public class FragmentDatePicker extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 dateIndicator=position;
                 if(dateIndicator==6){
-                    //Toast.makeText(getContext(),"Devi far apparire picker",Toast.LENGTH_LONG).show();
+                    datePicker.setVisibility(View.VISIBLE);
+                }
+                else{
+                    datePicker.setVisibility(View.INVISIBLE);
                 }
             }
 
@@ -90,7 +96,9 @@ public class FragmentDatePicker extends Fragment {
                         cal.add(Calendar.YEAR,-500);
                         break;
                     case 6://Data Manuale
-
+                        cal.set(Calendar.YEAR, datePicker.getYear());
+                        cal.set(Calendar.MONTH, datePicker.getMonth());
+                        cal.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
                         break;
                 }
                 date=cal.getTime();
