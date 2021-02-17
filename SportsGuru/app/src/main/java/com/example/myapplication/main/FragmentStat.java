@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.main;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.myapplication.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 

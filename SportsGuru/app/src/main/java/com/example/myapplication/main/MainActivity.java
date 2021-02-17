@@ -1,20 +1,19 @@
-package com.example.myapplication;
+package com.example.myapplication.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentContainer;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
+
+import com.example.myapplication.presentation.PresentationActivity;
+import com.example.myapplication.R;
+import com.example.myapplication.welcome.WelcomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void research() {
-        Intent i=new Intent(this,PresentationActivity.class);
+        Intent i=new Intent(this, PresentationActivity.class);
         Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+dataStatistica);
         i.putExtra("nome",nomeAtleta);
         i.putExtra("cognome",cognomeAtleta);
