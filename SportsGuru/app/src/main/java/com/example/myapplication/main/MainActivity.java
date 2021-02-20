@@ -11,19 +11,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.RelativeLayout;
 
+import com.example.myapplication.modules.Request;
 import com.example.myapplication.presentation.PresentationActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.welcome.WelcomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    String nomeAtleta="";
-    String cognomeAtleta="";
-    String statisticaAtleta="";
-    String dataStatistica="";
+
+    private Request richiesta;
 
 
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
     private ViewPager2 viewPager;
     private FragmentStateAdapter pagerAdapter;
     private RelativeLayout layout_navigazione;
@@ -31,14 +30,19 @@ public class MainActivity extends AppCompatActivity {
     WelcomeFragment welcome;
     FragmentAtleta atleta;
     FragmentStat stat;
+    FragmentConferma conferma;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        richiesta=new Request();
         welcome=new WelcomeFragment();
         atleta=new FragmentAtleta();
         stat=new FragmentStat();
+        conferma=new FragmentConferma();
+
+        richiesta=new Request();
 
         viewPager=findViewById(R.id.main_viewpager);
 
@@ -62,25 +66,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void confermaAtleta(String nome, String cognome){
-        nomeAtleta=nome;
-        cognomeAtleta=cognome;
+        richiesta.setNome(nome);
+        richiesta.setCognome(cognome);
     }
 
     public void confermaStatistica(String statistica){
-        statisticaAtleta=statistica;
+        richiesta.setStatistica(statistica);
     }
 
     public void confermaData(String data){
-        dataStatistica=data;
+        richiesta.setData(data);
     }
 
     public void research() {
         Intent i=new Intent(this, PresentationActivity.class);
-        Log.d("Request","Atleta: "+nomeAtleta+" "+cognomeAtleta+"\nStatistica: "+statisticaAtleta+"\nAnno: "+dataStatistica);
-        i.putExtra("nome",nomeAtleta);
-        i.putExtra("cognome",cognomeAtleta);
-        i.putExtra("statistica",statisticaAtleta);
-        i.putExtra("anno",dataStatistica);
+        Log.d("Request","Atleta: "+richiesta.getNome()+" "+richiesta.getCognome()+"\nStatistica: "+richiesta.getStatistica()+"\nAnno: "+richiesta.getStatistica());
+        i.putExtra("request",richiesta);
         startActivity(i);
     }
 
@@ -104,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
             else if(position==3){
                 f=new FragmentDatePicker();
             }
+            else if(position==4){
+                f=new FragmentConferma();
+            }
             return f;
         }
 
@@ -113,19 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public String getNomeAtleta() {
-        return nomeAtleta;
-    }
-
-    public String getCognomeAtleta() {
-        return cognomeAtleta;
-    }
-
-    public String getStatisticaAtleta() {
-        return statisticaAtleta;
-    }
-
-    public String getDataStatistica() {
-        return dataStatistica;
+    public Request getRichiesta() {
+        return richiesta;
     }
 }

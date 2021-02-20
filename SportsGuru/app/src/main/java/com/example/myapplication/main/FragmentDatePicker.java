@@ -101,7 +101,7 @@ public class FragmentDatePicker extends Fragment {
                 date=cal.getTime();
                 //Toast.makeText(getContext(),"Data di partenza: "+formatter.format(date),Toast.LENGTH_LONG).show();
                 activity.confermaData(formatter.format(date));
-                activity.research();
+                activity.next(INDEX);
             }
         });
         back.setOnClickListener(new View.OnClickListener() {

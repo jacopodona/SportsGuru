@@ -25,7 +25,7 @@ public class PresentationActivity extends AppCompatActivity {
         nomeAtleta=findViewById(R.id.presentation_textview_atleta);
         statAtleta=findViewById(R.id.presentation_textview_stat);
         annoAtleta=findViewById(R.id.presentation_textview_anno);
-        back=findViewById(R.id.conferma_back);
+        back=findViewById(R.id.presentation_back);
 
         Intent i=getIntent();
         nome=i.getStringExtra("nome");
