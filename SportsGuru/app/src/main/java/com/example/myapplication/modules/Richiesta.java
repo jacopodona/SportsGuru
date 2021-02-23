@@ -2,18 +2,18 @@ package com.example.myapplication.modules;
 
 import java.io.Serializable;
 
-public class Request implements Serializable {
+public class Richiesta implements Serializable {
 
     private String nome,cognome,statistica,data;
 
-    public Request() {
+    public Richiesta() {
         this.nome = "";
         this.cognome = "";
         this.statistica = "";
         this.data = "";
     }
 
-    public Request(String nome, String cognome, String statistica, String data) {
+    public Richiesta(String nome, String cognome, String statistica, String data) {
         this.nome = nome;
         this.cognome = cognome;
         this.statistica = statistica;

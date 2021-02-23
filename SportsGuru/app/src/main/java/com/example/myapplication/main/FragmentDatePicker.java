@@ -66,7 +66,7 @@ public class FragmentDatePicker extends Fragment {
 
     private void setupBottoni() {
         MainActivity activity = (MainActivity) getActivity();
-        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat formatter= new SimpleDateFormat("dd.MM.yyyy");
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

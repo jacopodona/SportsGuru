@@ -4,50 +4,60 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.example.myapplication.R;
+import com.example.myapplication.modules.Richiesta;
+import com.example.myapplication.utilities.HttpRequest;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 
-public class PresentationActivity extends AppCompatActivity {
+import org.json.JSONObject;
 
-    MaterialButton back;
-    MaterialTextView nomeAtleta,statAtleta,annoAtleta;
-    String nome,cognome,stat,anno;
+ public class PresentationActivity extends AppCompatActivity {
+
+    private MaterialButton back;
+    private MaterialTextView risposta;
+    private String nome,cognome,stat,anno;
+    private Richiesta richiesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presentation);
 
-        nomeAtleta=findViewById(R.id.presentation_textview_atleta);
-        statAtleta=findViewById(R.id.presentation_textview_stat);
-        annoAtleta=findViewById(R.id.presentation_textview_anno);
-        back=findViewById(R.id.presentation_back);
+        risposta=findViewById(R.id.presentation_response);
 
         Intent i=getIntent();
-        nome=i.getStringExtra("nome");
-        cognome=i.getStringExtra("cognome");
-        stat=i.getStringExtra("statistica");
-        anno=i.getStringExtra("anno");
+
+        richiesta= (Richiesta) i.getSerializableExtra("request");
+        String URL="/player/date/"+richiesta.getStatistica()+"/"+richiesta.getCognome()+"%20"+richiesta.getNome().charAt(0)+".&"+richiesta.getData();
+
+        new HttpRequest(this, URL, Request.Method.GET, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                risposta.setText(response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                risposta.setText(error.toString());
+            }
+        }).run();
+
 
         setupBottoni();
-
-        Log.d("Request","Atleta: "+nome+" "+cognome+"\nStatistica: "+stat+"\nAnno: "+anno);
-
-        nomeAtleta.setText(nome+" "+cognome);
-        statAtleta.setText(stat);
-        annoAtleta.setText(anno);
     }
 
     private void setupBottoni() {
-        back.setOnClickListener(new View.OnClickListener() {
+        /*back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
     }
 }

@@ -1,7 +1,6 @@
 package com.example.myapplication.main;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,7 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 
 import com.example.myapplication.R;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.android.material.textfield.TextInputLayout;
-import com.example.myapplication.modules.Request;
+import com.example.myapplication.modules.Richiesta;
 import com.google.android.material.textview.MaterialTextView;
 
 
@@ -21,7 +18,7 @@ public class FragmentConferma extends Fragment {
     private final int INDEX=4;
     private Button confirm,back;
     private MainActivity activity;
-    private Request richiesta;
+    private Richiesta richiesta;
     private MaterialTextView atleta,statistica,data;
 
     public FragmentConferma() {

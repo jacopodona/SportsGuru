@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.RelativeLayout;
 
-import com.example.myapplication.modules.Request;
+import com.example.myapplication.modules.Richiesta;
 import com.example.myapplication.presentation.PresentationActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.welcome.WelcomeFragment;
@@ -19,7 +19,7 @@ import com.example.myapplication.welcome.WelcomeFragment;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Request richiesta;
+    private Richiesta richiesta;
 
 
     private static final int NUM_PAGES = 5;
@@ -36,19 +36,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        richiesta=new Request();
+        richiesta=new Richiesta();
         welcome=new WelcomeFragment();
         atleta=new FragmentAtleta();
         stat=new FragmentStat();
         conferma=new FragmentConferma();
 
-        richiesta=new Request();
+        richiesta=new Richiesta();
 
         viewPager=findViewById(R.id.main_viewpager);
 
         pagerAdapter=new ScreenSlidePagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
-        //viewPager.setUserInputEnabled(false);//disable swipe dell'utente
+        viewPager.setUserInputEnabled(false);//disable swipe dell'utente
 
     }
 
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void research() {
         Intent i=new Intent(this, PresentationActivity.class);
-        Log.d("Request","Atleta: "+richiesta.getNome()+" "+richiesta.getCognome()+"\nStatistica: "+richiesta.getStatistica()+"\nAnno: "+richiesta.getStatistica());
+        Log.d("Request","Atleta: "+richiesta.getNome()+" "+richiesta.getCognome()+"\nStatistica: "+richiesta.getStatistica()+"\nAnno: "+richiesta.getData());
         i.putExtra("request",richiesta);
         startActivity(i);
     }
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public Request getRichiesta() {
+    public Richiesta getRichiesta() {
         return richiesta;
     }
 }

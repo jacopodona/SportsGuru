@@ -6,107 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".presentation.PresentationActivity">
 
-    <LinearLayout
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/presentation_response"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_marginHorizontal="60dp"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="60dp"
-            android:gravity="center"
-            android:text="@string/confirm_title"
-            android:textColor="@color/green"
-            android:textSize="30sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Atleta: " />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/presentation_textview_atleta"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="nomeAtleta" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Statistica: " />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/presentation_textview_stat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="statAtleta" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:orientation="horizontal">
-
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Anno: " />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/presentation_textview_anno"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="statAnno" />
-
-        </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/presentation_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:text="@string/back" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/presentation_confirm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="@string/next" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
+        android:text="JSON dal server" />
 
 </RelativeLayout>
