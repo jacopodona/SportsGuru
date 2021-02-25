@@ -23,6 +23,8 @@
     <string name="date_select">Seleziona la data</string>
     <string name="new_research">Nuova Ricerca</string>
     <string name="compare">Confronta</string>
+    <string name="compare_title">Confronto</string>
+    <string name="change_compare">Compara con un altro atleta</string>
     <string-array name="date_spinner">
         <item>Ultima partita</item>
         <item>Ultimo mese</item>

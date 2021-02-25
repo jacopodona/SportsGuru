@@ -1,15 +1,20 @@
  package com.example.myapplication.presentation;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.example.myapplication.R;
+import com.example.myapplication.confronta.ConfrontaActivity;
 import com.example.myapplication.main.MainActivity;
 import com.example.myapplication.modules.Richiesta;
 import com.example.myapplication.utilities.HttpRequest;
@@ -24,7 +29,11 @@ import org.json.JSONObject;
 
     private MaterialButton nuovaRicerca,confronta;
     private MaterialTextView risposta;
+    private AlertDialog confronto;
+    private AlertDialog.Builder confrontoBuilder;
+    private EditText nomeAtleta2,cognomeAtleta2;
     private String nome,cognome,stat,anno;
+    private int valoreAtleta1,valoreAtleta2;
     private Richiesta richiesta;
 
     @Override
@@ -54,12 +63,14 @@ import org.json.JSONObject;
         }).run();
 
 
+        buildDialog();
         setupBottoni();
     }
 
      private String handleResponse(int statValue) {
         String result=null;
         if(statValue>=0){
+            valoreAtleta1=statValue;
             result="Dal "+richiesta.getData()+" il giocatore "+richiesta.getNome()+" "+richiesta.getCognome()+" ha effettuato "+statValue+" "+richiesta.getStatistica();
         }else{
             result="C'è stato un errore nella formazione della richiesta";
@@ -90,7 +101,46 @@ import org.json.JSONObject;
                 newResearch();
             }
         });
+        confronta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confronto.show();
+            }
+        });
     }
+
+     private void confronta(String nomeAtleta2, String cognomeAtleta2) {
+         buildDialog();
+         Intent i=new Intent(getApplicationContext(), ConfrontaActivity.class);
+         i.putExtra("atleta1",richiesta);
+         i.putExtra("atleta2",new Richiesta(nomeAtleta2,cognomeAtleta2,richiesta.getStatistica(),richiesta.getData()));
+         startActivity(i);
+     }
+
+     private void buildDialog() {
+         confrontoBuilder= new AlertDialog.Builder(this);
+         View mView=getLayoutInflater().inflate(R.layout.dialog_compare,null);
+         confrontoBuilder.setTitle("Confronta con un altro atleta");
+         nomeAtleta2=mView.findViewById(R.id.dialog_nome_confronto);
+         cognomeAtleta2=mView.findViewById(R.id.dialog_cognome_confronto);
+         confrontoBuilder.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+                 if(!TextUtils.isEmpty(nomeAtleta2.getText()) && !TextUtils.isEmpty(cognomeAtleta2.getText())){
+                     confronta(nomeAtleta2.getText().toString(),cognomeAtleta2.getText().toString());
+                 }
+             }
+         });
+
+         confrontoBuilder.setNegativeButton("Annulla", new DialogInterface.OnClickListener() {
+             @Override
+             public void onClick(DialogInterface dialog, int which) {
+                 dialog.dismiss();
+             }
+         });
+         confrontoBuilder.setView(mView);
+         confronto=confrontoBuilder.create();
+     }
 
      private void newResearch() {
          Intent i=new Intent(getApplicationContext(), MainActivity.class);

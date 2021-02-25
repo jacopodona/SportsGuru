@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".confronta.ConfrontaActivity">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/compare_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:text="@string/compare_title"
+        android:textColor="@color/green"
+        android:textSize="28sp" />
+
+    <ImageView
+        android:id="@+id/compare_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_baseline_close_24" />
+
+    <RelativeLayout
+        android:id="@+id/compare_layout_icons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compare_title"
+        android:layout_marginTop="40dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="40dp"
+            app:strokeWidth="0dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/compare_img1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:src="@drawable/athlete_placeholder_green" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/compare_athlete1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/compare_img1"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Nome atleta 1"
+                    android:textColor="@color/black" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="40dp"
+            app:strokeWidth="0dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/compare_img2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:src="@drawable/athlete_placeholder_gold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/compare_athlete2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/compare_img2"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center"
+                    android:text="Nome atleta 2"
+                    android:textColor="@color/black" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </RelativeLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/compare_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compare_layout_icons"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="Atleta 1 ha 7 goal in più di Atleta 2"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/compare_textview"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="40dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/compare_stat_athlete1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="val"
+            android:textSize="18sp"
+            android:textColor="@color/black" />
+
+        <ProgressBar
+            android:id="@+id/compare_progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="30dp"
+            android:layout_toStartOf="@id/compare_stat_athlete2"
+            android:layout_toEndOf="@id/compare_stat_athlete1"
+            android:progress="50"
+            android:progressDrawable="@drawable/customprogressbar" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/compare_stat_athlete2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:text="val"
+            android:textColor="@color/black" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/compare_cambia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="40dp"
+        android:text="@string/change_compare" />
+
+</RelativeLayout>
