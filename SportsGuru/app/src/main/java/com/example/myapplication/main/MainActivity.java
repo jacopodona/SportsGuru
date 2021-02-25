@@ -1,11 +1,13 @@
 package com.example.myapplication.main;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -125,11 +127,32 @@ public class MainActivity extends AppCompatActivity {
             previous(i);
         }
         else{
-            super.onBackPressed();
+            closeAppDialog();
         }
     }
 
     public Richiesta getRichiesta() {
         return richiesta;
+    }
+
+
+    private void closeAppDialog() {
+        AlertDialog.Builder builder =new AlertDialog.Builder(this);
+        builder.setTitle("");
+        builder.setMessage("Sei sicuro di voler uscire dall'applicazione?");
+        builder.setPositiveButton("Conferma", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        builder.setNeutralButton("Annulla", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog=builder.create();
+        dialog.show();
     }
 }
