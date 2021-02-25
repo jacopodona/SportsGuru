@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Request","Atleta: "+richiesta.getNome()+" "+richiesta.getCognome()+"\nStatistica: "+richiesta.getStatistica()+"\nAnno: "+richiesta.getData());
         i.putExtra("request",richiesta);
         startActivity(i);
+        finish();
     }
 
     private class ScreenSlidePagerAdapter extends FragmentStateAdapter {
@@ -114,6 +115,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getItemCount() {
             return NUM_PAGES;
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        int i=viewPager.getCurrentItem();
+        if(i>0){
+            previous(i);
+        }
+        else{
+            super.onBackPressed();
         }
     }
 
