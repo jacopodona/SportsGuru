@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginHorizontal="60dp"
+        android:layout_marginHorizontal="40dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -25,7 +25,7 @@
             android:textColor="@color/green"
             android:textSize="30sp" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
@@ -34,18 +34,27 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toStartOf="@id/conferma_textview_atleta"
+                android:layout_centerInParent="true"
                 android:layout_marginRight="15dp"
-                android:text="Atleta: " />
+                android:text="Atleta: "
+                android:textColor="@color/green"
+                android:textSize="18sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/conferma_textview_atleta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nomeAtleta" />
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="nomeAtleta"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -54,18 +63,27 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@id/conferma_textview_stat"
                 android:layout_marginRight="15dp"
-                android:text="Statistica: " />
+                android:text="Statistica: "
+                android:textColor="@color/green"
+                android:textSize="18sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/conferma_textview_stat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="statAtleta" />
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="statAtleta"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -74,16 +92,25 @@
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@id/conferma_textview_data"
                 android:layout_marginRight="15dp"
-                android:text="Anno: " />
+                android:text="Data: "
+                android:textColor="@color/green"
+                android:textSize="18sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/conferma_textview_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="statAnno" />
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="statAnno"
+                android:textSize="20sp"
+                android:textColor="@color/black" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
