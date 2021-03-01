@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/presentation"
     tools:context=".presentation.PresentationActivity">
 
     <ImageView
@@ -14,15 +14,15 @@
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="40dp"
-        android:src="@drawable/athlete_placeholder_green" />
+        android:src="@drawable/athlete_icon_white" />
 
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="0dp"
+        app:cardCornerRadius="4dp"
         android:layout_below="@id/presentation_placeholder"
-        app:strokeWidth="1dp"
+        app:strokeWidth="0dp"
         app:strokeColor="@color/light_gray"
         android:background="@color/white"
         android:layout_centerInParent="true"
@@ -54,7 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="40dp"
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal">
@@ -63,18 +62,20 @@
             android:id="@+id/presentation_nuovaricerca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginHorizontal="10dp"
-            android:backgroundTint="@color/white"
+            android:textColor="@color/white"
             android:text="@string/new_research"
-            android:textColor="@color/green" />
+            android:backgroundTint="@color/green" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/presentation_confronta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
             android:text="@string/compare"
-            android:textColor="@color/green" />
+            android:backgroundTint="@color/green" />
 
     </LinearLayout>
 

@@ -90,7 +90,7 @@ public class FragmentDatePicker extends Fragment {
                         cal.add(Calendar.YEAR,-3);
                         break;
                     case 5://In carriera
-                        cal.add(Calendar.YEAR,-500);
+                        cal.set(Calendar.YEAR,1);
                         break;
                     case 6://Data Manuale
                         cal.set(Calendar.YEAR, datePicker.getYear());
@@ -98,9 +98,14 @@ public class FragmentDatePicker extends Fragment {
                         cal.set(Calendar.DAY_OF_MONTH, datePicker.getDayOfMonth());
                         break;
                 }
-                date=cal.getTime();
-                //Toast.makeText(getContext(),"Data di partenza: "+formatter.format(date),Toast.LENGTH_LONG).show();
-                activity.confermaData(formatter.format(date));
+                if(cal.get(Calendar.YEAR)==1){
+                    activity.confermaData("In Carriera");
+                }
+                else {
+                    date = cal.getTime();
+                    //Toast.makeText(getContext(),"Data di partenza: "+formatter.format(date),Toast.LENGTH_LONG).show();
+                    activity.confermaData(formatter.format(date));
+                }
                 activity.next(INDEX);
             }
         });

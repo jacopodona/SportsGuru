@@ -25,6 +25,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
  public class PresentationActivity extends AppCompatActivity {
 
     private MaterialButton nuovaRicerca,confronta;
@@ -48,7 +52,18 @@ import org.json.JSONObject;
         Intent i=getIntent();
 
         richiesta= (Richiesta) i.getSerializableExtra("request");
-        String URL="/player/date/"+richiesta.getStatistica()+"/"+richiesta.getCognome()+"%20"+richiesta.getNome().charAt(0)+".&"+richiesta.getData();
+        String data;
+        if(richiesta.getData().equals("In Carriera")){
+            Calendar cal=Calendar.getInstance();
+            SimpleDateFormat formatter= new SimpleDateFormat("dd.MM.yyyy");
+            cal.set(Calendar.YEAR,1);
+            Date date = cal.getTime();
+            data=formatter.format(date);
+        }
+        else{
+            data=richiesta.getData();
+        }
+        String URL="/player/date/"+richiesta.getStatistica()+"/"+richiesta.getCognome()+"%20"+richiesta.getNome().charAt(0)+".&"+data;
 
         new HttpRequest(this, URL, Request.Method.GET, new Response.Listener<JSONObject>() {
             @Override
@@ -71,7 +86,12 @@ import org.json.JSONObject;
         String result=null;
         if(statValue>=0){
             valoreAtleta1=statValue;
-            result="Dal "+richiesta.getData()+" il giocatore "+richiesta.getNome()+" "+richiesta.getCognome()+" ha effettuato "+statValue+" "+richiesta.getStatistica();
+            if(richiesta.getData().equals("In Carriera")){
+                result=richiesta.getData()+" il giocatore "+richiesta.getNome()+" "+richiesta.getCognome()+" ha effettuato "+statValue+" "+richiesta.getStatistica();
+            }
+            else{
+                result="Dal "+richiesta.getData()+" il giocatore "+richiesta.getNome()+" "+richiesta.getCognome()+" ha effettuato "+statValue+" "+richiesta.getStatistica();
+            }
         }else{
             result="C'è stato un errore nella formazione della richiesta";
         }

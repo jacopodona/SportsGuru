@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/compare"
     tools:context=".confronta.ConfrontaActivity">
 
     <com.google.android.material.textview.MaterialTextView
@@ -53,7 +54,7 @@
                     android:layout_height="80dp"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:src="@drawable/athlete_placeholder_green" />
+                    android:src="@drawable/athlete_icon_green" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/compare_athlete1"
@@ -88,7 +89,7 @@
                     android:layout_height="80dp"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:src="@drawable/athlete_placeholder_gold" />
+                    android:src="@drawable/athlete_icon_gold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/compare_athlete2"
@@ -168,6 +169,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/green"
         android:text="@string/change_compare" />
 
 </RelativeLayout>

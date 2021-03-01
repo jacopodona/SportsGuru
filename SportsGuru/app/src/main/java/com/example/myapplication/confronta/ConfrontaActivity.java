@@ -22,6 +22,10 @@ import com.google.android.material.textview.MaterialTextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class ConfrontaActivity extends AppCompatActivity {
 
     private ImageView close;
@@ -30,6 +34,7 @@ public class ConfrontaActivity extends AppCompatActivity {
     private MaterialTextView nome1,nome2,val1,val2,confronto;
     private ProgressBar progressBar;
     private Richiesta atleta1,atleta2;
+    private String data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,17 @@ public class ConfrontaActivity extends AppCompatActivity {
         Intent i=getIntent();
         atleta1= (Richiesta) i.getSerializableExtra("atleta1");
         atleta2= (Richiesta) i.getSerializableExtra("atleta2");
+
+        if(atleta1.getData().equals("In Carriera")){
+            Calendar cal=Calendar.getInstance();
+            SimpleDateFormat formatter= new SimpleDateFormat("dd.MM.yyyy");
+            cal.set(Calendar.YEAR,1);
+            Date date = cal.getTime();
+            data=formatter.format(date);
+        }
+        else{
+            data=atleta1.getData();
+        }
 
         close=findViewById(R.id.compare_close);
         cambia=findViewById(R.id.compare_cambia);
@@ -62,7 +78,7 @@ public class ConfrontaActivity extends AppCompatActivity {
     }
 
     private void setupConfronto() {
-        String URL1="/player/date/"+atleta1.getStatistica()+"/"+atleta1.getCognome()+"%20"+atleta1.getNome().charAt(0)+".&"+atleta1.getData();
+        String URL1="/player/date/"+atleta1.getStatistica()+"/"+atleta1.getCognome()+"%20"+atleta1.getNome().charAt(0)+".&"+data;
 
         new HttpRequest(this, URL1, Request.Method.GET, new Response.Listener<JSONObject>() {
             @Override
@@ -76,7 +92,7 @@ public class ConfrontaActivity extends AppCompatActivity {
                 Log.e("Errore in confronto1",error.toString());
             }
         }).run();
-        String URL2="/player/date/"+atleta2.getStatistica()+"/"+atleta2.getCognome()+"%20"+atleta2.getNome().charAt(0)+".&"+atleta2.getData();
+        String URL2="/player/date/"+atleta2.getStatistica()+"/"+atleta2.getCognome()+"%20"+atleta2.getNome().charAt(0)+".&"+data;
 
         new HttpRequest(this, URL2, Request.Method.GET, new Response.Listener<JSONObject>() {
             @Override
@@ -99,7 +115,7 @@ public class ConfrontaActivity extends AppCompatActivity {
             confronto.setText(atleta1.getNome()+" "+atleta1.getCognome()+" ha "+(valstat1-valstat2)+" "+atleta1.getStatistica()+" in più rispetto a "+atleta2.getNome()+" "+atleta2.getCognome());
         }
         else if(valstat2>valstat1){
-            confronto.setText(atleta1.getNome()+" "+atleta1.getCognome()+" ha "+(valstat1-valstat2)+" "+atleta1.getStatistica()+" in meno rispetto a "+atleta2.getNome()+" "+atleta2.getCognome());
+            confronto.setText(atleta1.getNome()+" "+atleta1.getCognome()+" ha "+(valstat2-valstat1)+" "+atleta1.getStatistica()+" in meno rispetto a "+atleta2.getNome()+" "+atleta2.getCognome());
         }
         else if(valstat1==valstat2){
             confronto.setText(atleta1.getNome()+" "+atleta1.getCognome()+" e "+atleta2.getNome()+" "+atleta2.getCognome()+" hanno lo stesso numero di "+atleta1.getStatistica());
